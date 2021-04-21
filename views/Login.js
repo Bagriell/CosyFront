@@ -1,56 +1,87 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Button, CheckBox, StyleSheet, Text, TextInput, View } from 'react-native';
 
+var isLogged = false;
 
-export default function Login({homeStyle, navigation})
-{
+export function handleLogin(navigation, textLogin, textPassword) {
+    fetch('http://0.0.0.0:5000/auth/login', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            login: textLogin,
+            password: textPassword
+        })
+    })
+        .then((response) => response.json())
+        .then((response) => {
+            if (response.msg == "Welcome to cosy roomie") {
+                isLogged = true;
+                navigation.navigate("Home")
+                return
+            }
+            alert(response.msg);
+            return response.msg;
+        })
+}
+
+export default function Login({ homeStyle, navigation }) {
+
+    const [username, onChangeUsername] = React.useState('');
+    const [password, onChangePassword] = React.useState("");
     const [isSelected, setSelection] = useState(false);
-    return(
-    <View style = {homeStyle}>
-        <TextInput
-            title = "Identifiant"
-            placeholder="Identifiant...">    
-        </TextInput>
-        <TextInput
-            title = "Mot de Passe"
-            placeholder="Mot de Passe...">    
-        </TextInput>
-        <View style={styles.checkboxContainer}>
-            <CheckBox title = "Restez connecter?"
-                value={isSelected}
-                onValueChange={setSelection}
-                style={styles.checkbox}
-            />
-            <Text style={styles.label}>Restez connecter?</Text>
+    return (
+        <View style={homeStyle}>
+            <TextInput
+                title="Identifiant"
+                placeholder="Identifiant..."
+                onChangeText={(text) => onChangeUsername(text)}
+                value={username}>
+            </TextInput>
+            <TextInput
+                title="Mot de Passe"
+                placeholder="Mot de Passe..."
+                onChangeText={(text) => onChangePassword(text)}
+                value={password}>
+            </TextInput>
+            <View style={styles.checkboxContainer}>
+                <CheckBox title="Restez connecter?"
+                    value={isSelected}
+                    onValueChange={setSelection}
+                    style={styles.checkbox}
+                />
+                <Text style={styles.label}>Restez connecter?</Text>
+            </View>
+            <Button
+                title="Connexion"
+                onPress={() => handleLogin(navigation, username, password)}>
+            </Button>
+            <Button
+                title="Retour"
+                onPress={() =>
+                    navigation.navigate("Accueil")}>
+            </Button>
         </View>
-        <Button
-            title = "Connexion"
-            onPress= {() => navigation.navigate("Home")}>
-        </Button>
-        <Button
-            title = "Retour"
-            onPress={() =>
-                navigation.navigate("Accueil")}>
-        </Button>
-    </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
     checkboxContainer: {
-      flexDirection: "row",
-      marginBottom: 10,
+        flexDirection: "row",
+        marginBottom: 10,
     },
     checkbox: {
-      alignSelf: "center",
+        alignSelf: "center",
     },
     label: {
-      margin: 10,
+        margin: 10,
     },
-  });
+});
