@@ -13,9 +13,7 @@ export function handleLogin(navigation, textEmail, textPassword) {
         },
         body: JSON.stringify({
             login: textEmail,
-            password: textPassword,
-            lastName: textLastName,
-            firstName: firstName
+            password: textPassword
         })
     })
         .then((response) => response.json())
