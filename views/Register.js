@@ -90,7 +90,7 @@ export default function Register({ homeStyle, navigation }) {
             <Button
                 title="Retour"
                 onPress={() =>
-                    navigation.navigate("Accueil")}>
+                    navigation.navigate("Connection")}>
             </Button>
         </View>
     );

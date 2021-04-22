@@ -62,7 +62,7 @@ export default function Login({ homeStyle, navigation }) {
             <Button
                 title="Retour"
                 onPress={() =>
-                    navigation.navigate("Accueil")}>
+                    navigation.navigate("Connection")}>
             </Button>
         </View>
     );
