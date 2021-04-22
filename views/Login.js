@@ -4,7 +4,7 @@ import { Button, CheckBox, StyleSheet, Text, TextInput, View } from 'react-nativ
 
 var isLogged = false;
 
-export function handleLogin(navigation, textLogin, textPassword) {
+export function handleLogin(navigation, textEmail, textPassword) {
     fetch('http://0.0.0.0:5000/auth/login', {
         method: 'POST',
         headers: {
@@ -12,8 +12,10 @@ export function handleLogin(navigation, textLogin, textPassword) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            login: textLogin,
-            password: textPassword
+            login: textEmail,
+            password: textPassword,
+            lastName: textLastName,
+            firstName: firstName
         })
     })
         .then((response) => response.json())
@@ -30,16 +32,16 @@ export function handleLogin(navigation, textLogin, textPassword) {
 
 export default function Login({ homeStyle, navigation }) {
 
-    const [username, onChangeUsername] = React.useState('');
+    const [email, onChangeEmail] = React.useState('');
     const [password, onChangePassword] = React.useState("");
     const [isSelected, setSelection] = useState(false);
     return (
         <View style={homeStyle}>
             <TextInput
-                title="Identifiant"
-                placeholder="Identifiant..."
-                onChangeText={(text) => onChangeUsername(text)}
-                value={username}>
+                title="Email"
+                placeholder="Email..."
+                onChangeText={(text) => onChangeEmail(text)}
+                value={email}>
             </TextInput>
             <TextInput
                 title="Mot de Passe"
@@ -57,7 +59,7 @@ export default function Login({ homeStyle, navigation }) {
             </View>
             <Button
                 title="Connexion"
-                onPress={() => handleLogin(navigation, username, password)}>
+                onPress={() => handleLogin(navigation, email, password)}>
             </Button>
             <Button
                 title="Retour"
