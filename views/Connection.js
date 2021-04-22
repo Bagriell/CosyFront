@@ -15,14 +15,16 @@ export default function HomePage({navigation})
 
     return (
       <View style={defaultStyle}>
-        <Button
-          title="Connexion"
-          onPress={() => navigation.navigate("Connection", defaultStyle)}
-        ></Button>
-        <Button
-          title="Inscription"
-          onPress={() => navigation.navigate("Inscription", defaultStyle)}
-        ></Button>
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <Button
+            title="Connexion"
+            onPress={() => navigation.navigate("Connection", defaultStyle)}
+          ></Button>
+          <Button
+            title="Inscription"
+            onPress={() => navigation.navigate("Inscription", defaultStyle)}
+          ></Button>
+        </View>
         <ImageBackground source={cover} style={defaultStyle.image}>
           <Text style={defaultStyle.text}>
             L'app la plus efficace pour trouver ta coloc !
