@@ -18,7 +18,7 @@ export default function HomePage({navigation})
         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
           <Button
             title="Connexion"
-            onPress={() => navigation.navigate("Connection", defaultStyle)}
+            onPress={() => navigation.navigate("Login", defaultStyle)}
           ></Button>
           <Button
             title="Inscription"
