@@ -1,10 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, TextInput, ImageBackground, Button, StyleSheet, Text, View } from 'react-native';
-import Login from './Login';
-import Register from './Register'
-import { NavigationContainer } from "@react-navigation/native";
+import { TextInput, ImageBackground, Button, StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
+import { Button as PaperButton} from 'react-native-paper';
 
 const cover = {uri: "https://source.unsplash.com/XkKCui44iM0/1600x900"}
 const Stack = createStackNavigator();
@@ -15,7 +12,7 @@ export default function HomePage({navigation})
 
     return (
       <View style={defaultStyle}>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Button
             title="Connexion"
             onPress={() => navigation.navigate("Login", defaultStyle)}
@@ -54,10 +51,13 @@ export default function HomePage({navigation})
           value={text}
           placeholder="1 personne"
         />
-        <Button
-          title="Valider"
-          onPress={() => Alert.alert("Simple Button pressed")}
-        />
+        <PaperButton
+          //icon="camera"
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+        >
+            Valider
+        </PaperButton>
       </View>
     );
 }
