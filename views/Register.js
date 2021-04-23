@@ -50,7 +50,7 @@ export default function Register({ homeStyle, navigation }) {
                 title="Nom"
                 placeholder="Nom..."
                 onChangeText={(text) => onChangeLastName(text)}
-                value={lastName}> //TODO change DB to fit lastName and firstName
+                value={lastName}>
             </TextInput>
             <TextInput
                 title="Prénom"
