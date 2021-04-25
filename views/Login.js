@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Button, CheckBox, StyleSheet, Text, TextInput, View } from 'react-native';
+import { TextInput as PaperInput} from 'react-native-paper';
 
 var isLogged = false;
 
@@ -34,19 +35,23 @@ export default function Login({ homeStyle, navigation }) {
     const [password, onChangePassword] = React.useState("");
     const [isSelected, setSelection] = useState(false);
     return (
-        <View style={homeStyle}>
-            <TextInput
+        <View style={styles.container}>
+            <PaperInput
                 title="Email"
+                label="Email"
+                mode="outlined"
                 placeholder="Email..."
                 onChangeText={(text) => onChangeEmail(text)}
                 value={email}>
-            </TextInput>
-            <TextInput
+            </PaperInput>
+            <PaperInput
                 title="Mot de Passe"
+                label="Mot de Passe"
+                mode="outlined"
                 placeholder="Mot de Passe..."
                 onChangeText={(text) => onChangePassword(text)}
                 value={password}>
-            </TextInput>
+            </PaperInput>
             <View style={styles.checkboxContainer}>
                 <CheckBox title="Restez connecter?"
                     value={isSelected}
@@ -71,7 +76,7 @@ export default function Login({ homeStyle, navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
+        alignItems: "evenly-spaced",
         justifyContent: "center",
     },
     checkboxContainer: {

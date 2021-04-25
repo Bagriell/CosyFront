@@ -3,6 +3,7 @@ import { TextInput, ImageBackground, Button, StyleSheet, Text, View } from 'reac
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button as PaperButton} from 'react-native-paper';
 
+
 const cover = {uri: "https://source.unsplash.com/XkKCui44iM0/1600x900"}
 const Stack = createStackNavigator();
 
@@ -52,11 +53,17 @@ export default function HomePage({navigation})
           placeholder="1 personne"
         />
         <PaperButton
-          //icon="camera"
+          icon="camera"
           mode="contained"
           onPress={() => console.log("Pressed")}
         >
             Valider
+        </PaperButton>
+        <PaperButton
+            mode="contained"
+            onPress={() => navigation.navigate("Profile Colocataire", defaultStyle)}
+        >
+            Colocataire
         </PaperButton>
       </View>
     );
