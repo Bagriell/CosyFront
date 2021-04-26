@@ -47,7 +47,7 @@ export default function ProfileColocataire({homeStyle, navigation})
             </View>
             <Text style={{flex: 5,
             justifyContent: "space-evenly",
-            alignItems: "center",}}>Tag</Text>
+            /*alignItems: "center",*/}}>Tag</Text>
             <PaperButton
             mode="contained">
                 Contacter
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     formulaireannonce: {
         flex: 3,
-        alignItems: "left",
+        //alignItems: "stretch",
     },
     profiledescription: {
         flex: 4,
