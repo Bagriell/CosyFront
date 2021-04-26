@@ -3,12 +3,27 @@ import React from 'react';
 import { ScrollView, StyleSheet, Image, Text, View, Button } from 'react-native';
 import { Button as PaperButton} from 'react-native-paper';
 import { Card as PaperCard} from 'react-native-paper';
-import { Title} from 'react-native-paper';
+import { Avatar, Title, Paragraph } from 'react-native-paper';
+
+const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 const FormulaireAnnonce = () => {
     return (
-    <View style={styles.formulaireannonce}>
-        <Text>Logement: N/A</Text>
+    <View style={{
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        padding: 20}}>
+        <Text style={{textAlign:"center",}}>Logement:</Text>
+        <PaperCard onPress = {() => console.log("Annonce!")}
+        style={{alignItems: "left"}}>
+            <PaperCard.Title title="Le mordor" subtitle="43 rue Garibaldi, 69007 Lyon"/>
+            <PaperCard.Content>
+                <Title>320€ par mois</Title>
+            </PaperCard.Content>
+            <PaperCard.Cover 
+            source={{ uri: 'https://picsum.photos/700' }}
+            style = {{}} />
+        </PaperCard>
     </View>
     );
 }
@@ -61,13 +76,13 @@ const styles = StyleSheet.create({
     },
     formulaireannonce: {
         flex: 3,
-        justifyContent: "center",
-        alignItems: "center",
+        alignItems: "left",
     },
     profiledescription: {
         flex: 4,
         textAlign:"center",
         justifyContent: "center",
         alignItems: "center",
+        padding: 20,
     },
 });
